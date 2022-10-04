@@ -1,3 +1,22 @@
+<?php 
+  include("database/abrir_conexion.php");
+
+  $btn = $_POST['btn-crear-cuenta'];
+  $correo = $_POST['correo'];
+  $password = $_POST['contrasenia'];
+
+  if(isset($btn)) {
+      if($correo == "" || $password == "") {
+          echo "Rellene los campos";
+      } else {
+          mysqli_query($conexion, "INSERT INTO $tablaSecion(correo, passwor) 
+          VALUES ('$correo','$password')");
+          echo '<div class="alert alert-success" role="alert">
+                  Cuenta creada con exito. <a href="../login.html" class="alert-link">INICIA SECION</a>
+                </div>';
+      }
+  }
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -18,8 +37,7 @@
   <body class="text-center">
     
     <main class="form-signin w-100 m-auto">
-      <?php include("php/loginup.php"); ?>
-      <form action="php/loginup.php" method="POST">
+      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
         <img class="mb-4" src="img/ecommerce.png" alt="" width="72" height="70">
         <h1 class="h3 mb-3 fw-normal">REGISTRESE</h1>
 
