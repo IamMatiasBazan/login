@@ -23,13 +23,16 @@
         <h1 class="h3 mb-3 fw-normal">LOGIN</h1>
 
         <div class="form-floating">
-          <input type="text" class="form-control" name="correo" placeholder="name@example.com">
+          <input type="email" class="form-control" name="correo" placeholder="name@example.com">
           <label>Email address</label>
         </div>
         
         <div class="form-floating">
           <input type="password" class="form-control" id="eye" name="contrasenia" placeholder="Password">
-          <i class="fa-solid fa-eye" onclick="mostrarPassword()" id="eyePassword" width="25" height="25"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" onclick="mostrarPassword()" width="25" height="25" fill="currentColor" id="eyePassword" class="bi bi-eye-fill" viewBox="0 0 16 16">
+            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+          </svg>
           <label>Password</label>
         </div>
 
