@@ -5,6 +5,9 @@ $para  = 'bazanmatias2004@gmail.com' . ', '; // atención a la coma
 // título
 $título = 'Gracias por registrarte';
 
+//Aleatoria
+$codigo = rand(1000, 9999);
+
 // mensaje
 $mensaje = '
 <html>
@@ -14,7 +17,7 @@ $mensaje = '
 </head>
 <body>
   <p>Tu código de verificación es:</p>
-  <h2>200231</h2>
+  <h2>'. $codigo .'</h2>
 </body>
 </html>
 ';
