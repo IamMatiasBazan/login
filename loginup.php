@@ -34,7 +34,7 @@
             mysqli_query($conexion, "INSERT INTO $tablaSecion(correo, passwor) 
                                     VALUES ('$_POST[correo]','$_POST[contrasenia]')");
             echo '<div class="alert alert-success" role="alert">
-                    Cuenta creada con exito. <a href="login.html" class="alert-link">INICIA SECION</a>
+                    Cuenta creada con exito. <a href="login.php" class="alert-link">INICIA SECION</a>
                   </div>';
           }
         }
