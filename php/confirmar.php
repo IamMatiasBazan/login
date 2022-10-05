@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
+<head>
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -11,35 +12,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <!-- CERRANDO BOOTSTRAP -->
 
-    <link href="css/signin.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/estilos.css">
-  </head>
-  <body class="text-center">
-    <main class="form-signin w-100 m-auto">
-      <?php 
-        include("database/abrir_conexion.php");
-
-        if(isset($_POST['btn-crear-cuenta'])) {
-          $verificarCorreo = mysqli_query($conexion, "SELECT correo FROM $tablaSecion WHERE correo = '$_POST[correo]'");
-          if(mysqli_num_rows($verificarCorreo)) {
-            echo '<div class="alert alert-danger" role="alert">
-                    La cuenta ya existe.
-                  </div>';
-          } else if($_POST['correo'] == "" || $_POST['contrasenia'] == "") {
-            echo '<div class="alert alert-danger" role="alert">
-                    Rellene los campos.
-                  </div>';
-          } else {
-            mysqli_query($conexion, "INSERT INTO $tablaSecion(correo, passwor) 
-                                    VALUES ('$_POST[correo]','$_POST[contrasenia]')");
-            header("Location: php/confirmar.php");
-          }
-        }
-      ?>
-      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+    <link rel="stylesheet" href="../css/signin.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+<main class="form-signin w-100 m-auto">
+      <form action="" method="POST">
         <img class="mb-4" src="img/carrito-de-compras.png" alt="" width="72" height="70">
-        <h1 class="h3 mb-3 fw-normal">REGISTRESE</h1>
+        <h1 class="h3 mb-3 fw-normal">LOGIN</h1>
 
         <div class="form-floating">
           <input type="email" class="form-control" name="correo" placeholder="name@example.com">
@@ -55,13 +36,12 @@
           <label>Password</label>
         </div>
 
-        <button class="w-100 btn btn-lg btn-primary" name="btn-crear-cuenta" type="submit">Sign up</button>
-        <a href="login.php" id="cuentaNueva"> 
-          <p>¿Ya tienes una cuenta?</p>
+        <button class="w-100 btn btn-lg btn-primary" name="btn-iniciar-secion" type="submit">Sign is</button>
+        <a href="loginup.php" id="cuentaNueva"> 
+          <p>¿Eres nuevo?</p>
         </a>
         <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
       </form>
     </main>
-    <script src="js/eye.js"></script>   
-  </body>
+</body>
 </html>
