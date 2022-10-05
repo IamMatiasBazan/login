@@ -31,16 +31,19 @@
                 $resultado = mysqli_query($conexion, "SELECT correo, passwor FROM $tablaSecion 
                 WHERE correo = '$_POST[correo]' AND passwor = '$_POST[contrasenia]'");
                 while($consulta = mysqli_fetch_array($resultado)) {
-                    $existe++;
+                  $existe++;
                 }
 
                 if($existe == 0) {
-                    echo '<div class="alert alert-danger" role="alert">
-                            La cuenta no existe.
-                          </div>';
+                  echo '<div class="alert alert-danger" role="alert">
+                          La cuenta no existe.
+                        </div>';
                 } else {
-                    header("Location: bienvenido.php");
-                    exit();
+                  session_start();
+                  $_SESSION['correo'] = $resultado;
+                  
+                  header("Location: bienvenido.php");
+                  exit();
                 }
             }
 
