@@ -19,7 +19,7 @@
     
     <main class="form-signin w-100 m-auto">
       <form action="php/login.php" method="POST">
-        <img class="mb-4" src="img/ecommerce.png" alt="" width="72" height="70">
+        <img class="mb-4" src="img/carrito-de-compras.png" alt="" width="72" height="70">
         <h1 class="h3 mb-3 fw-normal">LOGIN</h1>
 
         <div class="form-floating">
@@ -35,7 +35,7 @@
 
         <button class="w-100 btn btn-lg btn-primary" name="btn-iniciar-secion" type="submit">Sign is</button>
         <a href="loginup.php" id="cuentaNueva"> 
-          <p>¿Ya tienes una cuenta?</p>
+          <p>¿Eres nuevo?</p>
         </a>
         <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
       </form>
