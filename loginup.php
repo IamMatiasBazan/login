@@ -53,7 +53,7 @@
         </div>
 
         <button class="w-100 btn btn-lg btn-primary" name="btn-crear-cuenta" type="submit">Sign up</button>
-        <a href="login.html" id="cuentaNueva"> 
+        <a href="login.php" id="cuentaNueva"> 
           <p>¿Ya tienes una cuenta?</p>
         </a>
         <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
