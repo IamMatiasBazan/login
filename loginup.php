@@ -21,17 +21,22 @@
         include("database/abrir_conexion.php");
 
         if(isset($_POST['btn-crear-cuenta'])) {
-            if($_POST['correo'] == "" || $_POST['contrasenia'] == "") {
-              echo '<div class="alert alert-danger" role="alert">
-                      Rellene los campos.
-                    </div>';
-            } else {
-                mysqli_query($conexion, "INSERT INTO $tablaSecion(correo, passwor) 
-                VALUES ('$_POST[correo]','$_POST[contrasenia]')");
-                echo '<div class="alert alert-success" role="alert">
-                        Cuenta creada con exito. <a href="login.html" class="alert-link">INICIA SECION</a>
-                      </div>';
-            }
+          $verificarCorreo = mysqli_query($conexion, "SELECT correo FROM $tablaSecion WHERE correo = '$_POST[correo]'");
+          if(mysqli_num_rows($verificarCorreo)) {
+            echo '<div class="alert alert-danger" role="alert">
+                    La cuenta ya existe.
+                  </div>';
+          } else if($_POST['correo'] == "" || $_POST['contrasenia'] == "") {
+            echo '<div class="alert alert-danger" role="alert">
+                    Rellene los campos.
+                  </div>';
+          } else {
+            mysqli_query($conexion, "INSERT INTO $tablaSecion(correo, passwor) 
+                                    VALUES ('$_POST[correo]','$_POST[contrasenia]')");
+            echo '<div class="alert alert-success" role="alert">
+                    Cuenta creada con exito. <a href="login.html" class="alert-link">INICIA SECION</a>
+                  </div>';
+          }
         }
       ?>
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
