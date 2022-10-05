@@ -18,7 +18,7 @@
   <body class="text-center">
     
     <main class="form-signin w-100 m-auto">
-      <form action="php/login.php" method="POST">
+      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
         <img class="mb-4" src="img/carrito-de-compras.png" alt="" width="72" height="70">
         <h1 class="h3 mb-3 fw-normal">LOGIN</h1>
 
