@@ -1,19 +1,3 @@
-<?php 
-  include("database/abrir_conexion.php");
-
-
-  if(isset($_POST['btn-crear-cuenta'])) {
-      if($_POST['correo'] == "" || $_POST['contrasenia'] == "") {
-          echo "Rellene los campos";
-      } else {
-          mysqli_query($conexion, "INSERT INTO $tablaSecion(correo, passwor) 
-          VALUES ('$_POST[correo]','$_POST[contrasenia]')");
-          echo '<div class="alert alert-success" role="alert">
-                  Cuenta creada con exito. <a href="../login.html" class="alert-link">INICIA SECION</a>
-                </div>';
-      }
-  }
-?>
 <html lang="es">
   <head>
     <meta charset="utf-8">
@@ -33,6 +17,23 @@
   </head>
   <body class="text-center">
     <main class="form-signin w-100 m-auto">
+      <?php 
+        include("database/abrir_conexion.php");
+
+        if(isset($_POST['btn-crear-cuenta'])) {
+            if($_POST['correo'] == "" || $_POST['contrasenia'] == "") {
+              echo '<div class="alert alert-danger" role="alert">
+                      Rellene los campos.
+                    </div>';
+            } else {
+                mysqli_query($conexion, "INSERT INTO $tablaSecion(correo, passwor) 
+                VALUES ('$_POST[correo]','$_POST[contrasenia]')");
+                echo '<div class="alert alert-success" role="alert">
+                        Cuenta creada con exito. <a href="../login.html" class="alert-link">INICIA SECION</a>
+                      </div>';
+            }
+        }
+      ?>
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
         <img class="mb-4" src="img/carrito-de-compras.png" alt="" width="72" height="70">
         <h1 class="h3 mb-3 fw-normal">REGISTRESE</h1>

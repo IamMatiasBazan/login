@@ -23,10 +23,10 @@
         if (isset($_POST['btn-iniciar-secion'])) {
             $existe = 0;
 
-            if($_POST['correo'] == "" || $_POST['contrasenia'] == "@" ) {
-                echo ("El correo esta vacio, se necesita un arroba");
-            } else if ($_POST['contrasenia'] == "") {
-                echo ("La contraseña esta vacia");
+            if($_POST['correo'] == "" || $_POST['contrasenia'] == "" ) {
+              echo '<div class="alert alert-danger" role="alert">
+                      Rellene los campos.
+                    </div>';
             } else {
                 $resultado = mysqli_query($conexion, "SELECT correo, passwor FROM $tablaSecion 
                 WHERE correo = '$_POST[correo]' AND passwor = '$_POST[contrasenia]'");
