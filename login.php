@@ -1,3 +1,30 @@
+<?php
+    include ('database/abrir_conexion.php');
+
+    if (isset($_POST['btn-iniciar-secion'])) {
+        $existe = 0;
+
+        if($_POST['correo'] == "" || $_POST['contrasenia'] == "@" ) {
+            echo ("El correo esta vacio, se necesita un arroba");
+        } else if ($_POST['contrasenia'] == "") {
+            echo ("La contraseña esta vacia");
+        } else {
+            $resultado = mysqli_query($conexion, "SELECT correo, passwor FROM $tablaSecion 
+            WHERE correo = '$_POST[correo]' AND passwor = '$_POST[contrasenia]'");
+            while($consulta = mysqli_fetch_array($resultado)) {
+                $existe++;
+            }
+
+            if($existe == 0) {
+                echo "La cuenta no existe";
+            } else {
+                header("Location: bienvenido.php");
+                exit();
+            }
+        }
+
+    }
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
