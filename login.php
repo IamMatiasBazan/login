@@ -1,30 +1,3 @@
-<?php
-    include ('database/abrir_conexion.php');
-
-    if (isset($_POST['btn-iniciar-secion'])) {
-        $existe = 0;
-
-        if($_POST['correo'] == "" || $_POST['contrasenia'] == "@" ) {
-            echo ("El correo esta vacio, se necesita un arroba");
-        } else if ($_POST['contrasenia'] == "") {
-            echo ("La contraseña esta vacia");
-        } else {
-            $resultado = mysqli_query($conexion, "SELECT correo, passwor FROM $tablaSecion 
-            WHERE correo = '$_POST[correo]' AND passwor = '$_POST[contrasenia]'");
-            while($consulta = mysqli_fetch_array($resultado)) {
-                $existe++;
-            }
-
-            if($existe == 0) {
-                echo "La cuenta no existe";
-            } else {
-                header("Location: bienvenido.php");
-                exit();
-            }
-        }
-
-    }
-?>
 <html lang="es">
   <head>
     <meta charset="utf-8">
@@ -42,9 +15,37 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/estilos.css">
   </head>
-  <body class="text-center">
-    
+  <body class="text-center">    
     <main class="form-signin w-100 m-auto">
+      <?php
+        include ('database/abrir_conexion.php');
+
+        if (isset($_POST['btn-iniciar-secion'])) {
+            $existe = 0;
+
+            if($_POST['correo'] == "" || $_POST['contrasenia'] == "@" ) {
+                echo ("El correo esta vacio, se necesita un arroba");
+            } else if ($_POST['contrasenia'] == "") {
+                echo ("La contraseña esta vacia");
+            } else {
+                $resultado = mysqli_query($conexion, "SELECT correo, passwor FROM $tablaSecion 
+                WHERE correo = '$_POST[correo]' AND passwor = '$_POST[contrasenia]'");
+                while($consulta = mysqli_fetch_array($resultado)) {
+                    $existe++;
+                }
+
+                if($existe == 0) {
+                    echo '<div class="alert alert-danger" role="alert">
+                            La cuenta no existe.
+                          </div>';
+                } else {
+                    header("Location: bienvenido.php");
+                    exit();
+                }
+            }
+
+        }
+      ?>
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
         <img class="mb-4" src="img/carrito-de-compras.png" alt="" width="72" height="70">
         <h1 class="h3 mb-3 fw-normal">LOGIN</h1>
