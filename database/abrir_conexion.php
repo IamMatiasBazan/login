@@ -1,7 +1,7 @@
 <?php
     $host="localhost";
     $user="id19680197_matias";
-    $password="~3[dGw/Hzb?V5H8L";
+    $password="m>I/1+V<@<v(\=gA";
     $dbname="id19680197_login";
 
     $tablaSecion = 'secion';
