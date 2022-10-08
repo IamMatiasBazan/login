@@ -68,7 +68,7 @@
         </div>
 
         <button class="w-100 btn btn-lg btn-primary" name="btn-iniciar-secion" type="submit">Sign is</button>
-        <a href="loginup.php" id="cuentaNueva"> 
+        <a href="index.php" id="cuentaNueva"> 
           <p>¿Eres nuevo?</p>
         </a>
         <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
