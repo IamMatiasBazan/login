@@ -1,8 +1,8 @@
 <?php
-    $host="sql100.epizy.com";
-    $user="epiz_32740930";
-    $password="uxX5As5Kf20jog";
-    $dbname="epiz_32740930_login";
+    $host="localhost";
+    $user="id19680197_matias";
+    $password="~3[dGw/Hzb?V5H8L";
+    $dbname="id19680197_login";
 
     $tablaSecion = 'secion';
 
