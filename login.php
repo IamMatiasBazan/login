@@ -39,7 +39,6 @@
                           La cuenta no existe.
                         </div>';
                 } else {
-                  session_start();
                   $_SESSION['correo'] = $resultado;
                   
                   header("Location: bienvenido.php");
