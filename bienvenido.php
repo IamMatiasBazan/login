@@ -11,7 +11,7 @@
 <body>
     <?php 
         session_start();
-        $correo = $_SESSION['email'];
+        $correo = $_SESSION['correo'];
 
         echo "<center>";
             echo "<h1>BIENVENIDO</h1>";

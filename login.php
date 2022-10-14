@@ -25,7 +25,7 @@
           $correo = $_POST['correo'];
           $password = $_POST['contrasenia'];
 
-          if($_POST['correo'] == "" || $_POST['contrasenia'] == "" ) {
+          if($correo == "" || $password == "" ) {
             echo '<div class="alert alert-danger" role="alert">
                     Rellene los campos.
                   </div>';
@@ -35,8 +35,10 @@
             $array = mysqli_fetch_array($consulta);
               
             if($array['contar'] > 0) {
-              $_SESSION['email'] = $correo;
-              header("Location: bienvenido.php");
+              $_SESSION['correo'] = $correo;
+              echo "<script>
+                      window.location.href='bienvenido.php'
+                    </script>";
             } else {
               echo '<div class="alert alert-danger" role="alert">
                       Datos incorrectos.
