@@ -18,33 +18,31 @@
   <body class="text-center">    
     <main class="form-signin w-100 m-auto">
       <?php
-        include ('database/abrir_conexion.php');
-
         if (isset($_POST['btn-iniciar-secion'])) {
-            $existe = 0;
+          require 'database/abrir_conexion.php';
+          session_start();
 
-            if($_POST['correo'] == "" || $_POST['contrasenia'] == "" ) {
-              echo '<div class="alert alert-danger" role="alert">
-                      Rellene los campos.
-                    </div>';
+          $correo = $_POST['correo'];
+          $password = $_POST['contrasenia'];
+
+          if($_POST['correo'] == "" || $_POST['contrasenia'] == "" ) {
+            echo '<div class="alert alert-danger" role="alert">
+                    Rellene los campos.
+                  </div>';
+          } else {
+            $q = "SELECT COUNT(*) AS contar FROM $tablaSecion WHERE correo = '$correo' AND passwor = '$password'";
+            $consulta = mysqli_query($conexion, $q);
+            $array = mysqli_fetch_array($consulta);
+              
+            if($array['contar'] > 0) {
+              $_SESSION['email'] = $correo;
+              header("Location: bienvenido.php");
             } else {
-                $resultado = mysqli_query($conexion, "SELECT correo, passwor FROM $tablaSecion 
-                WHERE correo = '$_POST[correo]' AND passwor = '$_POST[contrasenia]'");
-                while($consulta = mysqli_fetch_array($resultado)) {
-                  $existe++;
-                }
-
-                if($existe == 0) {
-                  echo '<div class="alert alert-danger" role="alert">
-                          La cuenta no existe.
-                        </div>';
-                } else {
-                  $_SESSION['correo'] = $resultado;
-                  
-                  header("Location: bienvenido.php");
-                  exit();
-                }
+              echo '<div class="alert alert-danger" role="alert">
+                      Datos incorrectos.
+                    </div>';
             }
+          }
 
         }
       ?>
